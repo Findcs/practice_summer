@@ -1,39 +1,36 @@
-package ru.asmolov.game.controller;
+package ru.asmolov.game.security;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
 import ru.asmolov.game.model.Session;
-import ru.asmolov.game.model.User;
 import ru.asmolov.game.repository.SessionRepository;
-import ru.asmolov.game.service.UserService;
 
-import java.security.Principal;
-import java.util.Optional;
-
-@Controller
-public class ProfileController {
+@Component
+public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Autowired
     private SessionRepository sessionRepository;
 
-    @GetMapping("/profile")
-    public String showProfilePage(HttpServletRequest request, Model model) {
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String sessionId = getSessionIdFromCookie(request);
         if (sessionId != null) {
             Session session = sessionRepository.findBySessionId(sessionId);
             if (session != null) {
-                User user = session.getUser();
-                model.addAttribute("user", user);
-                return "profile";
+                // Идентификатор сеанса действителен
+                return true;
             }
         }
 
-        return "redirect:/login";
+        // Идентификатор сеанса недействителен
+        response.sendRedirect("/login");
+        return false;
     }
 
     private String getSessionIdFromCookie(HttpServletRequest request) {
