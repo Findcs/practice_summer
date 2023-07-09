@@ -32,9 +32,25 @@ public class UserService {
         user.setEmail(login);
         user.setPassword(password);
         user.setRole(1);
+        user.setExp(0);
+        user.setLvl(1);
+        user.setMoney(0);
         if (userRepository.findByEmail(login).isEmpty()){
             userRepository.save(user);
             return user;}
         else return  null;
+    }
+
+    public void addExp(User user, int exp)
+    {
+        user.setMoney(user.getMoney() + exp/10);
+        if(user.getExp() + exp> 100){
+            user.setExp(user.getExp() + exp - 100);
+            user.setLvl(user.getLvl()+1);
+            userRepository.save(user);
+        }
+        else {
+            user.setExp(user.getExp() + exp);
+        }
     }
 }

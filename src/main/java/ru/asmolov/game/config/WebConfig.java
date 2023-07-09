@@ -15,6 +15,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authenticationInterceptor)
-                .addPathPatterns("/profile"); // Добавьте другие защищенные пути, если есть
+                .addPathPatterns("/profile", "/game"); // Добавьте другие защищенные пути, если есть
     }
 }

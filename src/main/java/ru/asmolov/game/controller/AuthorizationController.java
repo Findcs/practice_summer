@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AuthorizationController {
     @GetMapping("/")
     public String autho(){
-        return "Authorization";
+        return "redirect:/profile";
     }
 }

@@ -21,6 +21,11 @@ public class User {
     private String email;
     private String password;
 
+    private int lvl;
+    private int money;
+
+    private int exp;
+
     private int role;
 
     @OneToMany(mappedBy = "user")
