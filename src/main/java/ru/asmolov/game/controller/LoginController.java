@@ -36,6 +36,7 @@ public class LoginController {
             sessionCookie.setMaxAge(86400); // Установите срок действия куки (здесь 1 день)
             sessionCookie.setPath("/"); // Установите путь, на котором будет доступна кука
             response.addCookie(sessionCookie);
+
             User user = userService.getUserByEmail(username); // Получить информацию о пользователе
             Session sessionObj = new Session();
             sessionObj.setSessionId(sessionId);
