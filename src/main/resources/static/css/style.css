@@ -1,0 +1,133 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 10px 20px;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    display: block;
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    transition: all ease-in-out;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: #87d0e4; /* Здесь указывается ваш бледный цвет */
+}
+.logoutNav{
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    transition: all ease-in-out;
+}
+
+.logoutNav:hover{
+    transform: scale(1.1);
+}
+.key{
+    font-weight: bold;
+    font-size: 24px;
+}
+.value{
+    font-size: 24px;
+
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    background-color: azure;
+    border-radius: 6px;
+    padding: 20px;
+    gap: 5px;
+}
+.info_block{
+    display: flex;
+    gap : 5px;
+}
+.container{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 60px);
+}
+.points{
+    display: flex;
+    gap: 10px;
+}
+
+.container > * {
+    margin-right: 20px;
+}
+
+.container > *:last-child {
+    margin-right: 0;
+}
+
+.progress_bar {
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    width: 200px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+}
+
+.progress_fill {
+    background-color: #4CAF50;
+    height: 100%;
+}
+.coin-image {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.money-section {
+    display: flex;
+    align-items: center;
+}
+.exp_block{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+}
