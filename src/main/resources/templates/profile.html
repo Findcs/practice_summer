@@ -10,6 +10,7 @@
   <ul>
     <li><a href="/profile">Личный кабинет</a></li>
     <li><a href="/game">Игра</a></li>
+    <li><a href="/leaderboard">Таблица Лидеров</a></li>
     <!-- Другие разделы -->
   </ul>
   <a href="/logout" class="logoutNav"  >Выйти</a>
@@ -17,7 +18,7 @@
 <div class="container">
   <div class="info">
     <h2>User Profile</h2>
-    <div class="info_block"><p class="key">Username: </p><p th:text="${user.email}" class="value"></p></div>
+    <div class="info_block"><p class="key" >Username: </p><p th:text="${user.email}" class="value" id="username"></p></div>
     <div class="info_block"><p class="key">Lvl</p><p th:text="${user.lvl}" class="value"></p></div>
     <div class="exp_block"> <p class="key">Experience</p>
       <div class="progress_bar">
@@ -30,6 +31,14 @@
         <img src="/img/coin.png" alt="Coin" class="coin-image">
       </div>
     </div>
+    <div  class="info_block">
+    <button id="changeNicknameButton">Change Nickname</button>
+      <div id="changeNickname" style="display: none;">
+        <label for="newNickname">New Nickname:</label>
+        <input type="text" id="newNickname" name="newNickname" required>
+        <button id="submitchange">Change</button>
+      </div>
+    </div>
   </div>
   <div class="info">
     <h2>Ваши лучшие 10 попыток</h2>
@@ -40,7 +49,11 @@
     </div>
   </div>
 </div>
-
+<script th:inline="javascript">
+    var username = /*[[${user.email}]]*/ null;
+    console.log("Username: " + username);
+</script>
+<script src="/js/usernamechange.js"></script>
 
 </body>
 </html>

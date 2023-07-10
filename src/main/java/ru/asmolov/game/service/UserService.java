@@ -53,4 +53,13 @@ public class UserService {
             user.setExp(user.getExp() + exp);
         }
     }
+    public User setNewUsername(User user, String newUsername){
+        user.setEmail(newUsername);
+        userRepository.save(user);
+        return user;
+    }
+
+    public List<User> getTop10PlayersByMoney() {
+        return userRepository.findTop10ByOrderByMoneyDesc();
+    }
 }

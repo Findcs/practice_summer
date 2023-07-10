@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/profile">Личный кабинет</a></li>
+        <li><a href="/game">Игра</a></li>
+        <li><a href="/leaderboard">Таблица Лидеров</a></li>
+        <!-- Другие разделы -->
+    </ul>
+    <a href="/logout" class="logoutNav"  >Выйти</a>
+</nav>
+<h1>Leaderboard</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Score</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="attempt : ${topAttempts}">
+        <td th:text="${attempt.user.email}"></td>
+        <td th:text="${attempt.points}"></td>
+    </tr>
+    </tbody>
+</table>
+<table>
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Money</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.money}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

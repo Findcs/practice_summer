@@ -2,12 +2,20 @@ package ru.asmolov.game.controller;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import ru.asmolov.game.helper.UsernameRequest;
 import ru.asmolov.game.model.Attempt;
+import ru.asmolov.game.model.ScoreRequest;
 import ru.asmolov.game.model.Session;
 import ru.asmolov.game.model.User;
 import ru.asmolov.game.repository.AttemptRepository;
@@ -17,6 +25,7 @@ import ru.asmolov.game.service.UserService;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Controller
 @AllArgsConstructor
@@ -24,9 +33,10 @@ public class ProfileController {
 
     private AttemptRepository attemptRepository;
     private SessionRepository sessionRepository;
+    private UserService userService;
 
     @GetMapping("/profile")
-    public String showProfilePage(HttpServletRequest request, Model model) {
+    public String showProfilePage(@RequestParam(name = "timestamp", required = false) Integer timestamp,HttpServletRequest request, Model model) {
         String sessionId = getSessionIdFromCookie(request);
         if (sessionId != null) {
             Session session = sessionRepository.findBySessionId(sessionId);
@@ -41,6 +51,26 @@ public class ProfileController {
 
         return "redirect:/login";
     }
+
+
+    @PostMapping("/profile/change-nickname")
+    public String saveScore(@RequestBody UsernameRequest usernameRequest, RedirectAttributes redirectAttributes, HttpServletResponse response) {
+        String username = usernameRequest.getUsername();
+        System.out.println(username);
+        String newusername = usernameRequest.getNewusername();
+        System.out.println(newusername);
+        User user = userService.getUserByEmail(username);
+        if (userService.getUserByEmail(newusername)==null) {
+            userService.setNewUsername(user,newusername);
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Expires", "0");
+            int randomNumber = new Random().nextInt(10000);
+            redirectAttributes.addAttribute("timestamp", randomNumber);
+        }
+        return "redirect:/profile";
+    }
+
 
     private static String getSessionIdFromCookie(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
