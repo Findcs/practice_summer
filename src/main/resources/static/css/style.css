@@ -1,8 +1,9 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 nav {
     background-color: #333;
     display: flex;
@@ -51,25 +52,29 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: #87d0e4; /* Здесь указывается ваш бледный цвет */
 }
-.logoutNav{
+
+.logoutNav {
     font-size: 24px;
     color: #fff;
     text-decoration: none;
     transition: all ease-in-out;
 }
 
-.logoutNav:hover{
+.logoutNav:hover {
     transform: scale(1.1);
 }
-.key{
+
+.key {
     font-weight: bold;
     font-size: 24px;
 }
-.value{
+
+.value {
     font-size: 24px;
 
 }
-.info{
+
+.info {
     display: flex;
     flex-direction: column;
     background-color: azure;
@@ -77,18 +82,21 @@ body {
     padding: 20px;
     gap: 5px;
 }
-.info_block{
+
+.info_block {
     display: flex;
-    gap : 5px;
+    gap: 5px;
 }
-.container{
+
+.container {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     height: calc(100vh - 60px);
 }
-.points{
+
+.points {
     display: flex;
     gap: 10px;
 }
@@ -115,6 +123,7 @@ body {
     background-color: #4CAF50;
     height: 100%;
 }
+
 .coin-image {
     width: 20px;
     height: 20px;
@@ -125,7 +134,8 @@ body {
     display: flex;
     align-items: center;
 }
-.exp_block{
+
+.exp_block {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -134,18 +144,17 @@ body {
 .ld_title {
     font-size: 3rem;
 }
-  
+
 .ld_container {
     max-width: 1024px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh-60px);
     flex-direction: column;
     gap: 20px;
 }
-  
+
 .ld {
     background-color: white;
     border-radius: 6px;
@@ -156,19 +165,122 @@ body {
     text-align: center;
     align-items: center;
 }
-  
+
 .ld_item {
     display: grid;
     gap: 10px;
     width: 100%;
     grid-template-columns: 1fr 1fr;
 }
-  
+
 .ld_heading {
     font-weight: bold;
 }
-  
+
 .ld_tables {
     display: flex;
     gap: 20px;
+}
+
+.nav_link {
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    transition: all ease-in-out;
+}
+
+.nav_link:hover {
+    transform: scale(1.1);
+}
+
+.nav-texts {
+    display: flex;
+    font-family: sans-serif;
+}
+
+.nav-texts > span {
+    position: relative;
+    padding: .5rem 1rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-texts > span:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 25%;
+    width: 2px;
+    height: 50%;
+    background-color: rgb(111, 111, 120);
+}
+
+.skin_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+}
+
+.shop_container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.skins {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.skin_details {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.skin_price {
+    font-weight: bold;
+    color: green;
+}
+
+.skin_name {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.skin_image {
+    width: 150px;
+    height: 100px;
+    object-fit: fill;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+.skin_button {
+    margin-top: 10px;
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: #487cb7;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.skin_button:hover {
+    background-color: #284e80;
+    transform: scale(1.05);
 }
