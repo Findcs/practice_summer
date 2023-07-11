@@ -11,6 +11,7 @@
     <li><a href="/profile">Личный кабинет</a></li>
     <li><a href="/game">Игра</a></li>
     <li><a href="/leaderboard">Таблица Лидеров</a></li>
+    <li><a href="/shop">Магаз</a></li>
     <!-- Другие разделы -->
   </ul>
   <a href="/logout" class="logoutNav"  >Выйти</a>
@@ -45,15 +46,25 @@
     <div th:each="attempt : ${attempts}" class="attempt">
       <div><strong>Очки:</strong> <span th:text="${attempt.points}"></span></div>
     <!-- Другая информация о попытке -->
-      </div>
+    </div>
+  </div>
+  <div class="info">
+  <h2>User Birds</h2>
+    <div class="=info_block">
+      <ul>
+        <li th:each="bird : ${birds}">
+          <img th:src="@{'/img/' + ${bird.name + '.png'}}" alt="Bird Image">
+          <span th:text="${bird.name}"></span>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
+
 <script th:inline="javascript">
     var username = /*[[${user.email}]]*/ null;
     console.log("Username: " + username);
 </script>
 <script src="/js/usernamechange.js"></script>
-
 </body>
 </html>

@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -30,4 +32,12 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Attempt> attempts;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_bird",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "bird_id")
+    )
+    private Set<Bird> birds = new HashSet<>();
 }

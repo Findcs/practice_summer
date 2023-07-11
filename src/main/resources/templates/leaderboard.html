@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" >
   <head>
     <meta charset="UTF-8" />
     <title>Leaderboard</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
+      <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
   <body>
     <nav>
@@ -16,12 +16,12 @@
       <a href="/logout" class="logoutNav">Выйти</a>
     </nav>
     <div class="ld_container">
-      <h1 class="ld_title">Leaderboard</h1>
+      <h1 class="ld_title">Таблицы лидеров</h1>
       <div class="ld_tables">
         <div class="ld">
           <div class="ld_item">
-            <p class="ld_heading">Username</p>
-            <p class="ld_heading">Score</p>
+            <p class="ld_heading">Пользователь</p>
+            <p class="ld_heading">Очки</p>
           </div>
           <div class="ld_item" th:each="attempt : ${topAttempts}">
             <p th:text="${attempt.user.email}"></p>
@@ -30,10 +30,10 @@
         </div>
         <div class="ld">
           <div class="ld_item">
-            <p class="ld_heading">Username</p>
-            <p class="ld_heading">Money</p>
+            <p class="ld_heading">Пользователь</p>
+            <p class="ld_heading">Валюта</p>
           </div>
-          <div th:each="user : ${users}">
+          <div th:each="user : ${users}" class="ld_item">
             <p th:text="${user.email}"></p>
             <p th:text="${user.money}"></p>
           </div>

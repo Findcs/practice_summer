@@ -18,14 +18,17 @@ import ru.asmolov.game.model.Attempt;
 import ru.asmolov.game.model.ScoreRequest;
 import ru.asmolov.game.model.Session;
 import ru.asmolov.game.model.User;
+import ru.asmolov.game.model.Bird;
 import ru.asmolov.game.repository.AttemptRepository;
 import ru.asmolov.game.repository.SessionRepository;
+import ru.asmolov.game.service.BirdService;
 import ru.asmolov.game.service.UserService;
 
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.Set;
 
 @Controller
 @AllArgsConstructor
@@ -34,6 +37,7 @@ public class ProfileController {
     private AttemptRepository attemptRepository;
     private SessionRepository sessionRepository;
     private UserService userService;
+    private BirdService birdService;
 
     @GetMapping("/profile")
     public String showProfilePage(@RequestParam(name = "timestamp", required = false) Integer timestamp,HttpServletRequest request, Model model) {
@@ -42,9 +46,11 @@ public class ProfileController {
             Session session = sessionRepository.findBySessionId(sessionId);
             if (session != null) {
                 User user = session.getUser();
+                Set<Bird> userBirds = user.getBirds();
                 List<Attempt> attempts = attemptRepository.findTop10ByUserIdOrderByPointsDesc(user.getId());
                 model.addAttribute("attempts", attempts);
                 model.addAttribute("user", user);
+                model.addAttribute("birds", userBirds);
                 return "profile";
             }
         }
