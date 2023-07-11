@@ -49,7 +49,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: #87d0e4; /* Здесь указывается ваш бледный цвет */
+    background-color: #87d0e4; /* Здесь указывается ваш бледный цвет */
 }
 .logoutNav{
     font-size: 24px;
@@ -131,3 +131,45 @@ body {
     gap: 5px;
 
 }
+
+.ld_title {
+    font-size: 3rem;
+  }
+  
+  .ld_container {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh-60px);
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .ld {
+    background-color: white;
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .ld_item {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .ld_heading {
+    font-weight: bold;
+  }
+  
+  .ld_tables {
+    display: flex;
+    gap: 20px;
+  }

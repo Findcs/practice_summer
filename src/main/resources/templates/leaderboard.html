@@ -1,48 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Leaderboard</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body>
-<nav>
-    <ul>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
         <li><a href="/profile">Личный кабинет</a></li>
         <li><a href="/game">Игра</a></li>
         <li><a href="/leaderboard">Таблица Лидеров</a></li>
         <!-- Другие разделы -->
-    </ul>
-    <a href="/logout" class="logoutNav"  >Выйти</a>
-</nav>
-<h1>Leaderboard</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Username</th>
-        <th>Score</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="attempt : ${topAttempts}">
-        <td th:text="${attempt.user.email}"></td>
-        <td th:text="${attempt.points}"></td>
-    </tr>
-    </tbody>
-</table>
-<table>
-    <thead>
-    <tr>
-        <th>Username</th>
-        <th>Money</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user : ${users}">
-        <td th:text="${user.email}"></td>
-        <td th:text="${user.money}"></td>
-    </tr>
-    </tbody>
-</table>
-</body>
+      </ul>
+      <a href="/logout" class="logoutNav">Выйти</a>
+    </nav>
+    <div class="ld_container">
+      <h1 class="ld_title">Leaderboard</h1>
+      <div class="ld_tables">
+        <div class="ld">
+          <div class="ld_item">
+            <p class="ld_heading">Username</p>
+            <p class="ld_heading">Score</p>
+          </div>
+          <div class="ld_item" th:each="attempt : ${topAttempts}">
+            <p th:text="${attempt.user.email}"></p>
+            <p th:text="${attempt.points}"></p>
+          </div>
+        </div>
+        <div class="ld">
+          <div class="ld_item">
+            <p class="ld_heading">Username</p>
+            <p class="ld_heading">Money</p>
+          </div>
+          <div th:each="user : ${users}">
+            <p th:text="${user.email}"></p>
+            <p th:text="${user.money}"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
