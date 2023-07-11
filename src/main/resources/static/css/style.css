@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
 }
-
 nav {
     background-color: #333;
     display: flex;
@@ -31,7 +30,6 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
     transition: all ease-in-out;
-    border-right: 2px;
 }
 
 nav ul li a:hover {
@@ -131,22 +129,23 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
-
 }
+
 .ld_title {
     font-size: 3rem;
 }
-
+  
 .ld_container {
     max-width: 1024px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: calc(100vh-60px);
     flex-direction: column;
     gap: 20px;
 }
-
+  
 .ld {
     background-color: white;
     border-radius: 6px;
@@ -156,20 +155,19 @@ body {
     gap: 10px;
     text-align: center;
     align-items: center;
-    font-size: 30px;
 }
-
+  
 .ld_item {
     display: grid;
     gap: 10px;
     width: 100%;
     grid-template-columns: 1fr 1fr;
 }
-
+  
 .ld_heading {
     font-weight: bold;
 }
-
+  
 .ld_tables {
     display: flex;
     gap: 20px;
