@@ -129,14 +129,13 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
-
 }
 
 .ld_title {
     font-size: 3rem;
-  }
+}
   
-  .ld_container {
+.ld_container {
     max-width: 1024px;
     margin: 0 auto;
     display: flex;
@@ -145,9 +144,9 @@ body {
     min-height: calc(100vh-60px);
     flex-direction: column;
     gap: 20px;
-  }
+}
   
-  .ld {
+.ld {
     background-color: white;
     border-radius: 6px;
     padding: 10px;
@@ -156,20 +155,20 @@ body {
     gap: 10px;
     text-align: center;
     align-items: center;
-  }
+}
   
-  .ld_item {
+.ld_item {
     display: grid;
     gap: 10px;
     width: 100%;
     grid-template-columns: 1fr 1fr;
-  }
+}
   
-  .ld_heading {
+.ld_heading {
     font-weight: bold;
-  }
+}
   
-  .ld_tables {
+.ld_tables {
     display: flex;
     gap: 20px;
-  }
+}
