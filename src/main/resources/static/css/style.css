@@ -27,7 +27,7 @@ nav ul li {
 
 nav ul li a {
     display: block;
-    font-size: 24px;
+    font-size: 36px;
     color: #fff;
     text-decoration: none;
     transition: all ease-in-out;
@@ -54,7 +54,7 @@ body {
 }
 
 .logoutNav {
-    font-size: 24px;
+    font-size: 36px;
     color: #fff;
     text-decoration: none;
     transition: all ease-in-out;
@@ -66,11 +66,11 @@ body {
 
 .key {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 32px;
 }
 
 .value {
-    font-size: 24px;
+    font-size: 32px;
 
 }
 
@@ -183,7 +183,8 @@ body {
 }
 
 .nav_link {
-    font-size: 24px;
+    font-size: 36px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #fff;
     text-decoration: none;
     transition: all ease-in-out;
@@ -210,7 +211,7 @@ body {
 .nav-texts > span:not(:last-child)::after {
     content: '';
     position: absolute;
-    right: -2px;
+    right: -10px;
     top: 25%;
     width: 2px;
     height: 50%;
@@ -283,4 +284,20 @@ body {
 .skin_button:hover {
     background-color: #284e80;
     transform: scale(1.05);
+}
+
+h2 {
+    font-size: 40px;
+}
+
+.changingnick{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 30px;
+}
+
+.inputschange{
+    font-size: 18px;
+    padding: 2px 5px;
 }

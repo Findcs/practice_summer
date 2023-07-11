@@ -41,7 +41,7 @@ yPos = 100;
 grav = 0;
 for(var i = 0; i < 5; i++){  
 pipe[i] = {
- x : cvs.width-100 + 220 *i,
+ x : cvs.width-100 + 270 *i,
  y : Math.floor(Math.random() * pipeUp.height) - pipeUp.height
 }
 }
@@ -105,7 +105,7 @@ xhr.send(JSON.stringify(data));
  if(pipe[i].x < 5) {
  score++;
  if(score> bestScore){bestScore= score;}
- pipe[i].x = max_x() + 200;
+ pipe[i].x = max_x() + 270;
  pipe[i].y =  Math.floor(Math.random() * pipeUp.height) - pipeUp.height;
  }
  }
