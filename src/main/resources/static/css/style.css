@@ -306,3 +306,8 @@ h2 {
     pointer-events: none;
     background-color: #555;
 }
+
+.game_image{
+    width: 20px;
+    height: 20px;
+}

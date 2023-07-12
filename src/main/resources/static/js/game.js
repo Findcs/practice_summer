@@ -7,7 +7,28 @@ var fg = new Image();
 var pipeUp = new Image();
 var pipeBottom = new Image();
 
-bird.src = "img/bird.png";
+fetch('/getcurrentbird')
+  .then(response => response.text())
+  .then(data => {
+    // Обработка полученных данных
+    var currentBird = data;
+    bird.src = "img/" +currentBird+ ".png" // Значение текущей птицы
+    bird.height= 26;
+    bird.width=38;
+    bird.style = {
+      width: "20px",
+      height: "20px"
+    }
+    bird.classList.add("game_image")
+    console.log(currentBird);
+    // Дальнейшая обработка данных
+  })
+  .catch(error => {
+    // Обработка ошибки
+    console.error('Error:', error);
+  });
+
+
 bg.src = "img/bg.png";
 fg.src = "img/fg.png";
 pipeUp.src = "img/pipeUp.png";
@@ -26,10 +47,12 @@ var yPos = 150;
 var grav = 1.5;
 // При нажатии на какую-либо кнопку
 document.addEventListener("click", moveUp);
-
+document.addEventListener("keydown", moveUp);
 function moveUp() {
  grav = -2;
 }
+
+
 
 // Создание блоков
 var pipe = [];
@@ -112,7 +135,7 @@ xhr.send(JSON.stringify(data));
  for (var j = 0; j < 4; j++) {
     ctx.drawImage(fg, j*fg.width, cvs.height - fg.height);
 }
- ctx.drawImage(bird, xPos, yPos);
+ ctx.drawImage(bird, xPos, yPos, bird.width,bird.height);
  
 
  yPos += grav;

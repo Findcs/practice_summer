@@ -50,12 +50,15 @@
   <div class="info">
   <h2>User Birds</h2>
     <div class="=info_block">
-      <ul>
-        <li th:each="bird : ${birds}">
-          <img th:src="@{'/img/' + ${bird.name + '.png'}}" alt="Bird Image">
-          <span th:text="${bird.name}"></span>
+      <ul class="skins">
+        <li class="skin_card" th:each="bird : ${birds}">
+            <img class="skin_image" th:src="@{'/img/' + ${bird.name + '.png'}}"/>
+            <div class="skin_details">
+                <span class="skin_name" th:text="${bird.name}"></span>
+            </div>
+            <button class="changecolor" type="button" th:id="${bird.name}">Купить</button>
+
         </li>
-      </ul>
     </div>
   </div>
 </div>

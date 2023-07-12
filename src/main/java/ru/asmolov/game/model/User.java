@@ -29,8 +29,8 @@ public class User {
     private int exp;
 
     private int role;
-
-
+    @Column(columnDefinition = "VARCHAR(255) DEFAULT 'default'")
+    private String currentBird;
     @OneToMany(mappedBy = "user")
     private List<Attempt> attempts;
 

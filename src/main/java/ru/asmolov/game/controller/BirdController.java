@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import ru.asmolov.game.helper.BuySkin;
+import ru.asmolov.game.helper.ColorRequest;
 import ru.asmolov.game.model.Attempt;
 import ru.asmolov.game.model.Bird;
 import ru.asmolov.game.model.Session;
@@ -59,11 +60,28 @@ public class BirdController {
                 String birdName = buySkin.getName();
                 boolean flag = birdService.buy(user, birdName);
                 if (flag)
-                    return ResponseEntity.ok("Zaebis");
+                    return ResponseEntity.ok("Ok");
             }
         }
         return ResponseEntity.badRequest().build();
     }
+
+    @PostMapping("/changecolor")
+    public ResponseEntity changeColor(@RequestBody ColorRequest colorRequest, HttpServletRequest request){
+        String sessionId = getSessionIdFromCookie(request);
+        if (sessionId != null) {
+            Session session = sessionRepository.findBySessionId(sessionId);
+            if (session != null) {
+                User user = session.getUser();
+                String birdName = colorRequest.getName();
+                birdService.changecolor(user, birdName);
+                return ResponseEntity.ok().build();
+            }
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+
     @GetMapping("/getuserbirds")
     public ResponseEntity<List<Bird>> getUserBirds(HttpServletRequest request){
         String sessionId = getSessionIdFromCookie(request);
@@ -73,6 +91,19 @@ public class BirdController {
                 User user = session.getUser();
                 List<Bird> userbirds = new ArrayList<>(user.getBirds());
                 return ResponseEntity.ok().body(userbirds);
+            }
+        }
+        return ResponseEntity.badRequest().build();
+    }
+    @GetMapping("/getcurrentbird")
+    public ResponseEntity<String> getCurrentBird(HttpServletRequest request){
+        String sessionId = getSessionIdFromCookie(request);
+        if (sessionId != null) {
+            Session session = sessionRepository.findBySessionId(sessionId);
+            if (session != null) {
+                User user = session.getUser();
+                String currentBird = user.getCurrentBird();
+                return ResponseEntity.ok().body(currentBird);
             }
         }
         return ResponseEntity.badRequest().build();

@@ -35,3 +35,29 @@ xhr.onreadystatechange = function() {
 
 xhr.send(JSON.stringify(data));
 });
+
+async function changecolor(event){
+  const id =event.target.id;
+  await fetch(
+      "http://localhost:8080/changecolor",
+      {
+          method : "POST",
+          body : JSON.stringify({name : id}),
+          headers :{
+              "Content-Type" : "application/json"
+          }
+      }
+  ) 
+  .then(()=>{
+      alert("Сменилось успешно")
+  })
+  .catch(()=>{
+      alert("Не сменилось")
+  })
+}
+
+const buttons = document.querySelectorAll(".changecolor");
+
+buttons.forEach((item ) =>{
+  item.addEventListener('click', changecolor)
+})

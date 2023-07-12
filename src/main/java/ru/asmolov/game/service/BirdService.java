@@ -38,5 +38,11 @@ public class BirdService {
         }
         return false;
     }
+
+    public void changecolor(User user, String name)
+    {
+        user.setCurrentBird(name);
+        userRepository.save(user);
+    }
     // Дополнительные методы для работы с птицами
 }
