@@ -15,16 +15,17 @@
     </ul>
     <a href="/logout" class="logoutNav">Выйти</a>
 </nav>
-<div class="shop_container">
-    <h1>Welcome to the Bird Shop</h1>
-    <ul class="skins">
-        <li class="skin_card" th:each="bird : ${birds}">
-            <img class="skin_image" th:src="@{'/img/' + ${bird.name + '.png'}}"/>
-            <div class="skin_details">
-                <span class="skin_name" th:text="${bird.name}"></span>
-                <span class="skin_price" th:text="${bird.price}"> ₿</span>
+
+<div class="sh_container">
+    <h1 class="h_shop">Welcome to the Bird Shop</h1>
+    <ul class="ski">
+        <li class="sk_card" th:each="bird : ${birds}">
+            <img class="sk_image" th:src="@{'/img/' + ${bird.name + '.png'}}"/>
+            <div class="sk_details">
+                <span class="sk_name" th:text="${bird.name}"></span>
+                <span class="sk_price" th:text="${bird.price}"> ₿</span>
             </div>
-            <button class="skin_button" type="button" th:id="${bird.name}">Купить</button>
+            <button class="sk_button" type="button" th:id="${bird.name}">Купить</button>
         </li>
     </ul>
 </div>
