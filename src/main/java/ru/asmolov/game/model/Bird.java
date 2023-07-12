@@ -1,5 +1,6 @@
 package ru.asmolov.game.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class Bird {
     private String name;
     private int price;
     @ManyToMany(mappedBy = "birds")
+    @JsonIgnore
     private Set<User> users = new HashSet<>();
 
     // Конструкторы, геттеры, сеттеры и другие методы

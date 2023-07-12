@@ -19,7 +19,7 @@
     <h1>Welcome to the Bird Shop</h1>
     <ul class="skins">
         <li class="skin_card" th:each="bird : ${birds}">
-            <img class="skin_image"/>
+            <img class="skin_image" th:src="@{'/img/' + ${bird.name + '.png'}}"/>
             <div class="skin_details">
                 <span class="skin_name" th:text="${bird.name}"></span>
                 <span class="skin_price" th:text="${bird.price}"> ₿</span>
@@ -28,10 +28,6 @@
         </li>
     </ul>
 </div>
-<script th:inline="javascript">
-    var birdList = /*[[${birdList}]]*/ null;
-    console.log(birdList);
-  </script>
 <script src="/js/buy.js"></script>
 </body>
 </html>

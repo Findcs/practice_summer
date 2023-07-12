@@ -2,6 +2,7 @@ package ru.asmolov.game.controller;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import ru.asmolov.game.model.Session;
 import ru.asmolov.game.model.User;
 import ru.asmolov.game.repository.SessionRepository;
 import ru.asmolov.game.service.BirdService;
+import ru.asmolov.game.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,8 @@ public class BirdController {
 
     private BirdService birdService;
     private SessionRepository sessionRepository;
+
+    private UserService userService;
 
     @GetMapping("/shop")
     public String showBirds(Model model, HttpServletRequest request) {
@@ -56,6 +60,19 @@ public class BirdController {
                 boolean flag = birdService.buy(user, birdName);
                 if (flag)
                     return ResponseEntity.ok("Zaebis");
+            }
+        }
+        return ResponseEntity.badRequest().build();
+    }
+    @GetMapping("/getuserbirds")
+    public ResponseEntity<List<Bird>> getUserBirds(HttpServletRequest request){
+        String sessionId = getSessionIdFromCookie(request);
+        if (sessionId != null) {
+            Session session = sessionRepository.findBySessionId(sessionId);
+            if (session != null) {
+                User user = session.getUser();
+                List<Bird> userbirds = new ArrayList<>(user.getBirds());
+                return ResponseEntity.ok().body(userbirds);
             }
         }
         return ResponseEntity.badRequest().build();
