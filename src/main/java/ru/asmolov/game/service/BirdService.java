@@ -26,5 +26,17 @@ public class BirdService {
         return birdRepository.findAll();
     }
 
+    public boolean buy(User user, String name)
+    {
+        Bird bird = birdRepository.findByName(name);
+        int balance = user.getMoney();
+        if(balance > bird.getPrice()){
+            user.getBirds().add(bird);
+            user.setMoney(balance - bird.getPrice());
+            userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
     // Дополнительные методы для работы с птицами
 }
