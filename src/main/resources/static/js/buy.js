@@ -35,8 +35,8 @@ async function getUserBirds() {
     });
   }
 
-getUserBirds();
 
 buttons.forEach((item ) =>{
     item.addEventListener('click', onbuyclick)
 })
+getUserBirds();
