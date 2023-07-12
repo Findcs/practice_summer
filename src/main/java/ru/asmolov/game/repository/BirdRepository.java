@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface BirdRepository extends JpaRepository<Bird, Long> {
     // Дополнительные методы для работы с птицами
-    Bird findByName(String email);
+    Bird findByName(String name);
 }
