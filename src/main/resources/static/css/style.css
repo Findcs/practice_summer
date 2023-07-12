@@ -301,3 +301,8 @@ h2 {
     font-size: 18px;
     padding: 2px 5px;
 }
+
+.skin_button:disabled{
+    pointer-events: none;
+    background-color: #555;
+}

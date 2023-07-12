@@ -30,7 +30,7 @@ public class BirdService {
     {
         Bird bird = birdRepository.findByName(name);
         int balance = user.getMoney();
-        if(balance > bird.getPrice()){
+        if(balance >= bird.getPrice()){
             user.getBirds().add(bird);
             user.setMoney(balance - bird.getPrice());
             userRepository.save(user);

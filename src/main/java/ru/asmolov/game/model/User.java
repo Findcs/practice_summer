@@ -30,6 +30,7 @@ public class User {
 
     private int role;
 
+
     @OneToMany(mappedBy = "user")
     private List<Attempt> attempts;
 

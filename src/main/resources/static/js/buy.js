@@ -19,14 +19,15 @@ async function onbuyclick(event){
     })
 }
 
-async function getUserBirds() {
-    await fetch("/getuserbirds").then(async (res) => {
+ function getUserBirds() {
+    fetch("/getuserbirds").then(async (res) => {
       if (res.status !== 200) {
         alert("ошибка");
         return;
       }
       const data = await res.json();
       const birdNames = data.map((item) => item.name);
+      console.log(birdNames);
       buttons.forEach((item) => {
         if (birdNames.includes(item.id)) {
           item.disabled = true;
