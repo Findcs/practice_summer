@@ -19,10 +19,12 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String registerUser(@RequestParam("username") String username, @RequestParam("password") String password) throws SQLException {
+    public String registerUser(@RequestParam("username") String username, @RequestParam("password") String password, Model model) throws SQLException {
         // Используйте параметры username и password напрямую
-        userService.add_user(username, password);
+        if(userService.add_user(username, password))
+            return "redirect:/login";
         // Реализуйте сохранение пользователя в базе данных или другую логику регистрации
-        return "redirect:/login";
+        model.addAttribute("error", "Юзернейм уже занят");
+        return "auth/Registration";
     }
 }

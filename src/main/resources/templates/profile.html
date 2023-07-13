@@ -11,30 +11,30 @@
     <span><a class="nav_link" href="/profile">Личный кабинет</a></span>
     <span><a class="nav_link" href="/game">Игра</a></span>
     <span><a class="nav_link" href="/leaderboard">Таблица Лидеров</a></span>
-    <span><a class="nav_link" href="/shop">Магаз</a></span>
+    <span><a class="nav_link" href="/shop">Магазин</a></span>
   </ul>
   <a href="/logout" class="logoutNav"  >Выйти</a>
 </nav>
 <div class="container">
   <div class="info">
-    <h2>User Profile</h2>
-    <div class="info_block"><p class="key" >Username: </p><p th:text="${user.email}" class="value" id="username"></p></div>
-    <div class="info_block"><p class="key">Lvl</p><p th:text="${user.lvl}" class="value"></p></div>
-    <div class="exp_block"> <p class="key">Experience</p>
+    <h2>Ваш профиль</h2>
+    <div class="info_block"><p class="key" >Юзернейм: </p><p th:text="${user.email}" class="value" id="username"></p></div>
+    <div class="info_block"><p class="key">Уровень: </p><p th:text="${user.lvl}" class="value"></p></div>
+    <div class="exp_block"> <p class="key">Опыт: </p>
       <div class="progress_bar">
         <div class="progress_fill" th:style="'width: ' + (${user.exp} / 100 * 100) + '%'"></div>
       </div>
       <p th:text="${user.exp}" class="value"></p></div>
-    <div class="info_block"><p class="key">Money</p>
+    <div class="info_block"><p class="key">Баланс: </p>
       <div class="money-section">
         <p th:text="${user.money}" class="value"></p>
         <img src="/img/coin.png" alt="Coin" class="coin-image">
       </div>
     </div>
     <div  class="changingnick">
-    <button id="changeNicknameButton" class="skin_button">Change Nickname</button>
+    <button id="changeNicknameButton" class="skin_button">Сменить юзернейм</button>
       <div id="changeNickname" class="changingform" style="display: none;">
-        <label for="newNickname">New Nickname:</label>
+        <label for="newNickname">Новый юзернейм:</label>
         <input placeholder="username" class="inputschange" type="text" id="newNickname" name="newNickname" required>
         <button id="submitchange" class="skin_button">Change</button>
       </div>
@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="info">
-  <h2>User Birds</h2>
+  <h2>Ваши Птички</h2>
     <div class="=info_block">
       <ul class="skins">
         <li class="skin_card" th:each="bird : ${birds}">
@@ -59,14 +59,15 @@
             <button class="changecolor" type="button" th:id="${bird.name}">Выбрать</button>
 
         </li>
+      </ul>
     </div>
   </div>
 </div>
-
 <script th:inline="javascript">
     var username = /*[[${user.email}]]*/ null;
     console.log("Username: " + username);
 </script>
 <script src="/js/usernamechange.js"></script>
+
 </body>
 </html>

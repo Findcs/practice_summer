@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +30,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session, HttpServletResponse response) {
+    public String loginUser(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session, HttpServletResponse response, Model model) {
         if (authService.authenticate(username, password)) {
             String sessionId = authService.createSessionId();
             Cookie sessionCookie = new Cookie("sessionId", sessionId);
@@ -44,7 +45,8 @@ public class LoginController {
 
             return "redirect:/profile";
         } else {
-            return "redirect:/login?error";
+            model.addAttribute("error", "Введены неверные данные");
+            return "auth/login";
         }
     }
 }

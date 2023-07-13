@@ -1,4 +1,29 @@
 const buttons = document.querySelectorAll("button");
+
+function badnotification(not){
+  var notification = document.createElement("div");
+  notification.classList.add("badcustom-notification");
+  notification.textContent = not;
+  document.body.appendChild(notification);
+// Удаление элемента через некоторое время
+  setTimeout(function() {
+    notification.remove();
+  }, 3000);
+}
+
+function goodnotification(not){
+  var notification = document.createElement("div");
+  notification.classList.add("goodcustom-notification");
+  notification.textContent = not;
+  document.body.appendChild(notification);
+
+ 
+// Удаление элемента через некоторое время
+  setTimeout(function() {
+    notification.remove();
+  }, 3000);
+}
+
 async function onbuyclick(event){
     const id =event.target.id;
     await fetch(
@@ -11,11 +36,13 @@ async function onbuyclick(event){
             }
         }
     ) 
-    .then(()=>{
-        alert("Куплено")
-    })
-    .catch(()=>{
-        alert("Нету денег")
+    .then((res)=>{
+        if (res.status == 200){
+        goodnotification("Успешно куплено", "red")
+      }
+      else{
+        badnotification("Недостаточно денег")
+      }
     })
 }
 

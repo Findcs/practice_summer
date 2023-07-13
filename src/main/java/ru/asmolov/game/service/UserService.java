@@ -30,7 +30,7 @@ public class UserService {
         else return userOptional.get();
     }
 
-    public User add_user(String login,String password ) throws SQLException {
+    public boolean add_user(String login,String password ) throws SQLException {
         User user = new User();
         user.setEmail(login);
         user.setPassword(password);
@@ -43,8 +43,8 @@ public class UserService {
         user.getBirds().add(defbird);
         if (userRepository.findByEmail(login).isEmpty()){
             userRepository.save(user);
-            return user;}
-        else return  null;
+            return true;}
+        else return  false;
     }
 
     public void addExp(User user, int exp)
@@ -53,6 +53,7 @@ public class UserService {
         if(user.getExp() + exp> 100){
             user.setExp(user.getExp() + exp - 100);
             user.setLvl(user.getLvl()+1);
+            user.setMoney(user.getMoney() + 10);
             userRepository.save(user);
         }
         else {

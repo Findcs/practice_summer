@@ -4,25 +4,36 @@
   <meta charset="UTF-8">
   <title>Registration</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-<div class="container">
-  <h2>Registration</h2>
-  <form th:action="@{/registration}" method="post">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+<div class="login_container">
+  <div class="log_base">
+    <h2 class="login_h">Регистрация</h2>
+    <form th:action="@{/registration}" method="post">
+      <div class="form-group">
+        <label for="username">Юзернейм</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+      </div>
+      <div class="form-group">
+        <label for="password">Пароль</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+      </div>
+      <button type="submit" class="btn_log">Зарегистрироваться</button>
+    </form>
+    <div class="reg_to">
+      <p>Зарегистрированы? <a href="/login">Войти</a></p>
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-    </div>
-    <button type="submit" class="btn btn-primary">Register</button>
-  </form>
-  <br>
-  <div th:if="${param.error}">
-    <div class="alert alert-danger">Registration failed. Username already exists.</div>
-  </div>
+  </div >
 </div>
+<div th:if="${error}" class="error-message">
+  <p th:text="${error}"></p>
+</div>
+<script>var errorElement = document.querySelector('.error-message');
+
+// Скрыть уведомление через 3 секунды
+setTimeout(function() {
+  errorElement.style.display = 'none';
+}, 3000);</script>
 </body>
 </html>
