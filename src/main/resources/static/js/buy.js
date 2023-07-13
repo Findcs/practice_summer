@@ -38,7 +38,7 @@ async function onbuyclick(event){
     ) 
     .then((res)=>{
         if (res.status == 200){
-        goodnotification("Успешно куплено", "red")
+        goodnotification("Успешно куплено")
       }
       else{
         badnotification("Недостаточно денег")

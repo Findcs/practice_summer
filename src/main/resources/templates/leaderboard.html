@@ -35,7 +35,10 @@
           </div>
           <div th:each="user : ${users}" class="ld_item">
             <p th:text="${user.email}"></p>
-            <p th:text="${user.money}"></p>
+            <div class="shopcoin">
+            <p th:text="${user.money}" class="sk_price"></p>
+            <img src="/img/coin.png" alt="Coin" class="coin-image">
+            </div>
           </div>
         </div>
       </div>

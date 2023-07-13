@@ -36,6 +36,30 @@ xhr.onreadystatechange = function() {
 xhr.send(JSON.stringify(data));
 });
 
+function badnotification(not){
+  var notification = document.createElement("div");
+  notification.classList.add("midcustom-notification");
+  notification.textContent = not;
+  document.body.appendChild(notification);
+// Удаление элемента через некоторое время
+  setTimeout(function() {
+    notification.remove();
+  }, 3000);
+}
+
+function goodnotification(not){
+  var notification = document.createElement("div");
+  notification.classList.add("goodcustom-notification");
+  notification.textContent = not;
+  document.body.appendChild(notification);
+
+ 
+// Удаление элемента через некоторое время
+  setTimeout(function() {
+    notification.remove();
+  }, 3000);
+}
+
 async function changecolor(event){
   const id =event.target.id;
   await fetch(
@@ -48,12 +72,13 @@ async function changecolor(event){
           }
       }
   ) 
-  .then(()=>{
-      alert("Сменилось успешно")
-  })
-  .catch(()=>{
-      alert("Не сменилось")
-  })
+  .then((res)=>{
+    if (res.status == 200){
+    goodnotification("Скин сменен")
+  }
+  else{
+    badnotification("Этот скин уже выбран")
+  }})
 }
 
 const buttons = document.querySelectorAll(".changecolor");

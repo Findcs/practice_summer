@@ -74,8 +74,8 @@ public class BirdController {
             if (session != null) {
                 User user = session.getUser();
                 String birdName = colorRequest.getName();
-                birdService.changecolor(user, birdName);
-                return ResponseEntity.ok().build();
+                if(birdService.changecolor(user, birdName))
+                    return ResponseEntity.ok().build();
             }
         }
         return ResponseEntity.badRequest().build();
