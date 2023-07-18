@@ -516,3 +516,12 @@ h2 {
     z-index: 9999;
 
   }
+
+  .flbird{
+  display:flex;
+  justify-items:center;
+  align-items:center;
+  font-size: 135px;
+  color: #FFFFFF;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }

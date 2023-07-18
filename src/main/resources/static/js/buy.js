@@ -27,7 +27,7 @@ function goodnotification(not){
 async function onbuyclick(event){
     const id =event.target.id;
     await fetch(
-        "http://localhost:8080/buy",
+        "/buy",
         {
             method : "POST",
             body : JSON.stringify({name : id}),

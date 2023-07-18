@@ -4,8 +4,6 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.asmolov.game.helper.UsernameRequest;
 import ru.asmolov.game.model.Attempt;
-import ru.asmolov.game.model.ScoreRequest;
 import ru.asmolov.game.model.Session;
 import ru.asmolov.game.model.User;
 import ru.asmolov.game.model.Bird;
@@ -24,9 +21,7 @@ import ru.asmolov.game.repository.SessionRepository;
 import ru.asmolov.game.service.BirdService;
 import ru.asmolov.game.service.UserService;
 
-import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 

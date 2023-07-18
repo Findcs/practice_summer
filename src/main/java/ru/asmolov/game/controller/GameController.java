@@ -27,7 +27,6 @@ public class GameController {
             if (session != null) {
                 User user = session.getUser();
                 List<Attempt> attempts = attemptRepository.findAll();
-
                 model.addAttribute("user", user);
                 return "game";
             }

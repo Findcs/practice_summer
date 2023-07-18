@@ -37,8 +37,10 @@ pipeBottom.src = "img/pipeBottom.png";
 // Звуковые файлы
 
 
+var desiredFPS = 144; // Желаемое количество кадров в секунду
+var delay = 1000 / desiredFPS; // Задержка между кадрами в миллисекундах
 
-var gap = 130;
+var gap = 120;
 var score = 0;
 var bestScore = 0;
 // Позиция птички
@@ -49,7 +51,7 @@ var grav = 1.5;
 document.addEventListener("click", moveUp);
 document.addEventListener("keydown", moveUp);
 function moveUp() {
- grav = -2;
+ grav = -3.7;
 }
 
 
@@ -84,16 +86,13 @@ function max_x(){
 var bgCount = Math.ceil(cvs.width/ bg.width);
 function draw() {
     for (var j = 0; j < 4; j++) {
-        ctx.drawImage(bg, (bg.width) * j, 0); 
-    }
+         ctx.drawImage(bg, (bg.width) * j, 0);
+     }
  for(var i = 0; i < pipe.length; i++) {
  ctx.drawImage(pipeUp, pipe[i].x, pipe[i].y);
  ctx.drawImage(pipeBottom, pipe[i].x, pipe[i].y + pipeUp.height + gap);
 
- pipe[i].x -= 1;
-
- 
-
+ pipe[i].x -= 3.5;
  // Отслеживание прикосновений
  if(xPos + bird.width >= pipe[i].x
  && xPos <= pipe[i].x + pipeUp.width
@@ -126,20 +125,22 @@ xhr.send(JSON.stringify(data));
  }
 
  if(pipe[i].x < 5) {
- score++;
- if(score> bestScore){bestScore= score;}
- pipe[i].x = max_x() + 270;
- pipe[i].y =  Math.floor(Math.random() * pipeUp.height) - pipeUp.height;
- }
- }
+    score++;
+    if(score> bestScore){bestScore= score;}
+    pipe[i].x = max_x() + 270;
+    pipe[i].y =  Math.floor(Math.random() * pipeUp.height) - pipeUp.height;
+  }
+}
+
+
  for (var j = 0; j < 4; j++) {
     ctx.drawImage(fg, j*fg.width, cvs.height - fg.height);
-}
+  }
  ctx.drawImage(bird, xPos, yPos, bird.width,bird.height);
  
 
  yPos += grav;
- grav += 0.03;
+ grav += 0.09;
 
  ctx.fillStyle = "#000";
  ctx.font = "24px Verdana";
@@ -147,5 +148,4 @@ xhr.send(JSON.stringify(data));
  ctx.fillText("Рекорд: " + bestScore, Math.floor(cvs.width* 0.8), cvs.height - 20);
  requestAnimationFrame(draw);
 }
-
 pipeBottom.onload = draw;

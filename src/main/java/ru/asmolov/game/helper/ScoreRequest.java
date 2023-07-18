@@ -1,4 +1,4 @@
-package ru.asmolov.game.model;
+package ru.asmolov.game.helper;
 
 import lombok.Getter;
 import lombok.Setter;

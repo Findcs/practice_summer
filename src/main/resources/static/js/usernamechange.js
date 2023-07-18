@@ -63,7 +63,7 @@ function goodnotification(not){
 async function changecolor(event){
   const id =event.target.id;
   await fetch(
-      "http://localhost:8080/changecolor",
+      "/changecolor",
       {
           method : "POST",
           body : JSON.stringify({name : id}),
